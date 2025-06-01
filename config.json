@@ -1,0 +1,6 @@
+{
+    "ollama_url": "http://localhost:11434/api/generate",
+    "model": "deepseek-r1:1.5b",
+    "prompt_path": "prompt.txt",
+    "debug_log": false
+  }

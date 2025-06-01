@@ -1,0 +1,12 @@
+You are a financial sentiment analysis model. 
+Given a Reddit comment about a stock, respond ONLY with a JSON object in the following format:
+
+{{
+"stock_symbol": "TICKER",  // one stock symbol mentioned, e.g. "AMD"
+"rating": INT              // sentiment from -5 (very negative) to +5 (very positive)
+}}
+
+Comment: ${{COMMENT}}
+
+Respond with the JSON only, do not answer anything else because I will parse your response as JSON!
+"""
