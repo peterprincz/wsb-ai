@@ -3,8 +3,8 @@ from flask import Flask
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from sqlmodel import SQLModel
-from admin import custom_model_view
-from model.db_models import Sentinent, Stock
+from admin.run_scrape import RunScape
+from model.db_models import Comment, Post, Sentinent, Stock
 from flask_admin.contrib.sqla import ModelView
 from repository.sentinent_repo import SentinentRepository
 from repository.database import db
@@ -32,6 +32,9 @@ if __name__ == "__main__":
         db.session.add(Sentinent(stock_id="AMD", rating=5))
         db.session.commit()
     admin = Admin(app, name="Admin", template_mode="bootstrap3")
-    admin.add_view(custom_model_view.CustomModelView(Sentinent, db.session))
-    admin.add_view(custom_model_view.CustomModelView(Stock, db.session))
+    admin.add_view(ModelView(Sentinent, db.session))
+    admin.add_view(ModelView(Stock, db.session))
+    admin.add_view(ModelView(Post, db.session))
+    admin.add_view(ModelView(Comment, db.session))
+    admin.add_view(RunScape(name="Run scraping"))
     app.run(debug=True)
