@@ -6,5 +6,6 @@
     "client_secret": "q_fL8SattrVQVEovZVUhaSmJ4DzNCA",
     "password": "FROM_ENV",
     "user_agent": "testscript by u/godofdeath11",
-    "username": "godofdeath11"
+    "username": "godofdeath11",
+    "database_uri": "sqlite:///db.sqlit"
 }

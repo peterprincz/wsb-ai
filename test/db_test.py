@@ -12,7 +12,7 @@ def session():
         yield session
         # Session closes automatically with context manager
 
-def test_add_user(session):
+def test_add_sentinent(session):
     sentinent = Sentinent(stock_symbol="AMD", rating=3)
     session.add(sentinent)
     session.commit()

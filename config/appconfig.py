@@ -11,7 +11,7 @@ class AppConfig(BaseModel):
     password:str
     user_agent:str
     username:str
-
+    database_uri:str
 
 def load_config(path: str = "config/config.json") -> AppConfig:
     with open(path, "r") as f:
