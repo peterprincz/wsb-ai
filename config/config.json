@@ -1,0 +1,10 @@
+{
+    "ollama_url": "http://localhost:11434/api/generate",
+    "model": "deepseek-r1:1.5b",
+    "prompt_path": "config/prompt.txt",
+    "client_id": "g182L2Vg9YWtapyaqceggw",
+    "client_secret": "q_fL8SattrVQVEovZVUhaSmJ4DzNCA",
+    "password": "FROM_ENV",
+    "user_agent": "testscript by u/godofdeath11",
+    "username": "godofdeath11"
+}

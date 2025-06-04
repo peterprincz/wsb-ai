@@ -3,16 +3,16 @@ import requests
 import json
 import re
 import logging as log
+from config.appconfig import config
+
 
 from model.dto_models import SentinentDTO
 
 class CommentAnalyzer:
-    def __init__(self, config):
-        self.ollama_url = config["ollama_url"]
-        self.model = config["model"]
-        self.prompt_path = config["prompt_path"]
-        self.debug_log = config["debug_log"]
-        self.prompt_template = self._load_prompt_template()
+    def __init__(self):
+        self.ollama_url = config.ollama_url
+        self.model = config.model
+        self.prompt_template = self._load_prompt_template(config.prompt_path)
 
     def analyze_comment(self, comment: str) -> Optional[SentinentDTO]:
         prompt = self._generate_prompt_for_comment(comment)
@@ -57,9 +57,9 @@ class CommentAnalyzer:
             return None
         return matches[-1]
     
-    def _load_prompt_template(self):
+    def _load_prompt_template(self, prompt_path: str):
         try:
-            with open(self.prompt_path, "r", encoding="utf-8") as f:
+            with open(prompt_path, "r", encoding="utf-8") as f:
                 return f.read()
         except Exception as e:
             log.error(f"Error while loading prompt template: {e}")
