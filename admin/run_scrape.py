@@ -9,7 +9,7 @@ class RunScape(BaseView):
     def index(self):
         log.info("Running webscrape")
         scraper = RedditScraper()
-        postsDTO = scraper.download_subreddit_data("wallstreetbets", 2)
+        postsDTO = scraper.download_subreddit_data("wallstreetbets", 1)
         for postDTO in postsDTO:
             RedditRepository.add(postDTO)
         flash("Function executed successfully!", "success")

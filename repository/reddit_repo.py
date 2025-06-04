@@ -1,17 +1,17 @@
 from reddit.reddit_scraper import PostDTO
 from repository.database import db
-from model.db_models import Comment, Post, Sentinent
+from model.dao_models import CommentDAO, PostDAO, SentinentDAO
 
 class RedditRepository:
+    
     @staticmethod
-
     def add(postDTO: PostDTO) -> None:
-        comments = []
+        db.session.add(PostDAO(id=postDTO.id, content=postDTO.title))
         for commentDTO in postDTO.comments:
-            comments.append(Comment(post_id=commentDTO.id, content=commentDTO.body))
-        db.session.add(Post(id=postDTO.id, content=postDTO.title, comments=comments))
+            commentDao = CommentDAO(id=commentDTO.id, post_id=postDTO.id, content=commentDTO.body)
+            db.session.add(commentDao)
         db.session.commit()
 
     @staticmethod
-    def get_all() -> list[Sentinent]:
-        return db.session.query(Sentinent).all()
+    def get_all() -> list[SentinentDAO]:
+        return db.session.query(SentinentDAO).all()

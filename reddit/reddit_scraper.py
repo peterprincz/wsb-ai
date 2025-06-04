@@ -2,24 +2,7 @@ from dataclasses import dataclass, field
 from typing import List, Optional
 import praw
 from config.appconfig import config
-
-
-@dataclass
-class CommentDTO:
-    id: str
-    body: str
-    score: int
-    author: Optional[str]  # None if deleted or unavailable
-
-@dataclass
-class PostDTO:
-    id: str
-    title: str
-    score: int
-    url: str
-    num_comments: int
-    comments: List[CommentDTO] = field(default_factory=list)
-
+from model.dto_models import CommentDTO, PostDTO
 class RedditScraper:
 
     def __init__(self) -> None:

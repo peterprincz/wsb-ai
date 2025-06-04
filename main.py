@@ -4,7 +4,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from sqlmodel import SQLModel
 from admin.run_scrape import RunScape
-from model.db_models import Comment, Post, Sentinent, Stock
+from model.dao_models import CommentDAO, PostDAO, SentinentDAO, StockDAO
 from flask_admin.contrib.sqla import ModelView
 from repository.sentinent_repo import SentinentRepository
 from repository.database import db
@@ -28,13 +28,13 @@ if __name__ == "__main__":
     with app.app_context():
         SQLModel.metadata.drop_all(db.engine)
         SQLModel.metadata.create_all(db.engine)
-        db.session.add(Stock(id="AMD",name="nev"))
-        db.session.add(Sentinent(stock_id="AMD", rating=5))
+        db.session.add(StockDAO(id="AMD",name="nev"))
+        db.session.add(SentinentDAO(stock_id="AMD", rating=5))
         db.session.commit()
     admin = Admin(app, name="Admin", template_mode="bootstrap3")
-    admin.add_view(ModelView(Sentinent, db.session))
-    admin.add_view(ModelView(Stock, db.session))
-    admin.add_view(ModelView(Post, db.session))
-    admin.add_view(ModelView(Comment, db.session))
+    admin.add_view(ModelView(SentinentDAO, db.session, "sentinents"))
+    admin.add_view(ModelView(StockDAO, db.session, "stocks"))
+    admin.add_view(ModelView(PostDAO, db.session, "posts"))
+    admin.add_view(ModelView(CommentDAO, db.session, "comments"))
     admin.add_view(RunScape(name="Run scraping"))
     app.run(debug=True)

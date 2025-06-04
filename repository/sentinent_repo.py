@@ -1,18 +1,18 @@
 from repository.database import db
-from model.db_models import Sentinent
+from model.dao_models import SentinentDAO
 
 class SentinentRepository:
     @staticmethod
-    def add(sentinent: Sentinent) -> None:
+    def add(sentinent: SentinentDAO) -> None:
         db.session.add(sentinent)
         db.session.commit()
 
     @staticmethod
-    def get_all() -> list[Sentinent]:
-        return db.session.query(Sentinent).all()
+    def get_all() -> list[SentinentDAO]:
+        return db.session.query(SentinentDAO).all()
 
     @staticmethod
-    def delete(sentinent: Sentinent) -> None:
+    def delete(sentinent: SentinentDAO) -> None:
         db.session.delete(sentinent)
         db.session.commit()
 
