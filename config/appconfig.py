@@ -14,7 +14,9 @@ class AppConfig(BaseModel):
     database_uri:str
 
 def load_config(path: str = "config/config.json") -> AppConfig:
-    with open(path, "r") as f:
+    newpath = (str)(os.path.dirname(__file__)) + "\config.json"
+    print(newpath)
+    with open(newpath, "r") as f:
         data = json.load(f)
     appconfig = AppConfig(**data)
     appconfig.password = os.getenv("reddit_password", "secret")
