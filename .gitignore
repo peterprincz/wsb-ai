@@ -16,3 +16,6 @@ dist/
 .vscode/
 .idea/
 db.sqlite
+
+# tradeing config file
+config/tradingconfig.json
