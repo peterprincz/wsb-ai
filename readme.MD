@@ -13,6 +13,10 @@ reddit_password = TITOK
 ## Tesztek futtatása
 `python -m pytest test/${test_file}.py`
 
+## alpaca setup
+csinálni kell egy config filet tradingconfig.json néven a tradingconfig_example alapján.
+Ezután kell egy alpaca felhasználó https://alpaca.markets/ ott a paper accountnál le kell generálni a key-t meg a secretet és azt berakni a jsonbe
+
 TODO:
 webscape-el kiértékelni a kommenteket majd azokat DB-be lementeni
 Db-ben lévő eredmények alapján kiértékelni a végrehajtandó trade-ket
